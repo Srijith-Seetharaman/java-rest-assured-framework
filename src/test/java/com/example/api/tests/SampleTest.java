@@ -1,7 +1,11 @@
 package com.example.api.tests;
 
+import com.example.api.endpoints.Endpoints;
+import com.example.api.models.request.UserLoginRequestPayload;
+import com.example.api.models.response.UserLoginResponsePayload;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.*;
@@ -12,12 +16,13 @@ public class SampleTest {
     public static void sampleEndToEndTest() {
         RestAssured.baseURI = "https://rahulshettyacademy.com/api/ecom";
 
-        given().body("""
-                        {
-                            "userEmail": "srijith.seetha@gmail.com",
-                            "userPassword": "8R2diOE7h3rqME"
-                        }""").contentType(ContentType.JSON).log().all()
-                .when().post("auth/login")
-                .then().log().all().statusCode(401);
+        UserLoginRequestPayload userLoginCredentials = new UserLoginRequestPayload().createValidCredentials();
+
+        UserLoginResponsePayload response = given().body(userLoginCredentials).contentType(ContentType.JSON).log().all()
+                .when().post(Endpoints.LOGIN.getPath())
+                .then().log().all().statusCode(200).extract().response().as(UserLoginResponsePayload.class);
+
+        Assert.assertEquals(response.getMessage(), "Login Successfully");
+
     }
 }

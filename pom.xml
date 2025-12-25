@@ -20,7 +20,7 @@
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
             <version>6.0.0</version>
-            <scope>test</scope>
+<!--            <scope>test</scope>-->
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.testng/testng -->
@@ -37,6 +37,14 @@
             <artifactId>lombok</artifactId>
             <version>1.18.42</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/tools.jackson.core/jackson-databind -->
+        <dependency>
+            <groupId>tools.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>3.0.3</version>
+        </dependency>
+
     </dependencies>
 
 </project>
