@@ -5,7 +5,8 @@ import lombok.Getter;
 @Getter
 public enum Endpoints {
 
-    LOGIN("/auth/login");
+    LOGIN("/auth/login"),
+    ADD_PRODUCT("product/add-product");
 
     private final String path;
 
