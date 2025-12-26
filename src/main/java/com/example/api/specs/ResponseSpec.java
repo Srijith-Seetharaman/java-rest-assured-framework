@@ -6,7 +6,7 @@ import io.restassured.specification.ResponseSpecification;
 
 public class ResponseSpec {
     public static ResponseSpecification responseSpecification() {
-        ResponseSpecBuilder requestSpecification = new ResponseSpecBuilder() ;
+        ResponseSpecBuilder requestSpecification = new ResponseSpecBuilder();
         requestSpecification.expectStatusCode(200);
         return requestSpecification.build();
     }

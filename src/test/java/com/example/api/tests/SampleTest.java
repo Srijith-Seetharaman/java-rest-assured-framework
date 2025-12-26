@@ -5,8 +5,9 @@ import com.example.api.endpoints.Endpoints;
 import com.example.api.models.request.UserLoginRequestPayload;
 import com.example.api.models.response.UserLoginResponsePayload;
 import com.example.api.clients.RestClient;
-import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class SampleTest extends BaseTest {
 
@@ -17,13 +18,13 @@ public class SampleTest extends BaseTest {
 
         RestClient restClient = new RestClient();
 
-        UserLoginResponsePayload userLoginResponsePayload = restClient.postAndParse(
+        UserLoginResponsePayload response = restClient.postAndParse(
                 Endpoints.LOGIN.getPath(),
                 userLoginCredentials,
                 UserLoginResponsePayload.class
         );
 
-        Assert.assertEquals(userLoginResponsePayload.getMessage(), "Login Successfully");
+        assertThat(response.getMessage()).isEqualTo("Login Successfully");
 
     }
 }
