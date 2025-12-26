@@ -1,5 +1,8 @@
 package com.example.api.endpoints;
 
+import lombok.Getter;
+
+@Getter
 public enum Endpoints {
 
     LOGIN("/auth/login");
@@ -10,7 +13,4 @@ public enum Endpoints {
         this.path = path;
     }
 
-    public String getPath() {
-        return this.path;
-    }
 }
